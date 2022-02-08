@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.mcdermid","l":"ListManager"},{"p":"org.mcdermid","l":"Node"}];updateSearchResults();
