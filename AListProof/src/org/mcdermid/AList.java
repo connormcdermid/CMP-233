@@ -22,11 +22,11 @@ public class AList<T> implements ListInterface<T> {
     }
 
     public void add(T val) throws ListException {
-        if (!checkSpace()) {
+        if (counter >= this.items.length) {
             throw new ListException("Out of space!");
-        } else {
-            this.items[this.counter++] = val;
         }
+        this.items[counter] = val;
+        counter += 1;
     }
 
     /**
@@ -72,8 +72,11 @@ public class AList<T> implements ListInterface<T> {
         if (obj == null) {
             throw new ListException("Item cannot be null.");
         }
+        if (this.counter == 0) {
+            throw new ListException("Failed to insert: cannot insert to empty list.");
+        }
         if (n < 1 || n > this.counter) {
-            throw new ListException("Specified index is invalid.");
+            throw new ListException("Failed to insert: Specified index is invalid.");
         }
         if (!checkSpace()) {
             resize();
@@ -86,6 +89,7 @@ public class AList<T> implements ListInterface<T> {
     }
 
     public T delete(int index) throws ListException {
+        index -= 1; // client uses a 1-based system, so correct the index
         if (this.counter == 0) {
             throw new ListException("Cannot delete: empty list.");
         }
