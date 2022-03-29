@@ -2,21 +2,21 @@ package org.mcdermid;
 
 public interface ListInterface<T> {
 
-    void add(T item) throws ListException;
+    public void add(T item) throws ListException;
 
-    void add(T item, int pos) throws ListException;
+    public void add(T item, int pos) throws ListException;
 
-    T get(int pos) throws ListException;
+    public T get(int pos) throws ListException;
 
-    void set(T item, int pos) throws ListException;
+    public void set(T item, int pos) throws ListException;
 
-    int find(T item, int start, int end) throws ListException;
+    public int find(T item, int start, int end) throws ListException;
 
-    int size();
+    public int size();
 
-    String toString();
+    public String toString();
 
-    T remove(int pos) throws ListException;
+    public T remove(int pos) throws ListException;
 
     void clear();
 
