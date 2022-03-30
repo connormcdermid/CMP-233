@@ -1,9 +1,9 @@
-package org.mcdermid;
+package org.mcdermid.assignment2;
 
 /**
  * Interface detailing how to constuct a List according to Professor Sawh.
  * Currently implemented with arrays.
- * @see org.mcdermid.AList
+ * @see AList
  * @param <T> Type for List
  * @author Connor McDermid
  */

@@ -1,7 +1,7 @@
-package org.mcdermid;
+package org.mcdermid.assignment2;
 
 /**
- * Implementation of List and {@link ListInterface<T>} with Arrays
+ * Implementation of List and {@link ListInterface <T>} with Arrays
  * @param <T> Type of object to store
  * @author Connor McDermid
  */
