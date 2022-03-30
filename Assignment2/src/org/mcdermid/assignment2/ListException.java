@@ -1,9 +1,9 @@
-package org.mcdermid;
+package org.mcdermid.assignment2;
 
 /**
- * For use with {@link org.mcdermid.ListInterface} and relevant classes
+ * For use with {@link ListInterface} and relevant classes
  * @author Connor McDermid
- * @see org.mcdermid.AList
+ * @see AList
  */
 public class ListException extends Exception {
 
