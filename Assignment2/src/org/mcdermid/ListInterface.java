@@ -8,7 +8,7 @@ public interface ListInterface<T> {
 
     public T get(int pos) throws ListException;
 
-    public void set(T item, int pos) throws ListException;
+    public T set(T item, int pos) throws ListException;
 
     public int find(T item, int start, int end) throws ListException;
 
