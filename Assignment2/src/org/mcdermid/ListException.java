@@ -2,6 +2,8 @@ package org.mcdermid;
 
 /**
  * For use with {@link org.mcdermid.ListInterface} and relevant classes
+ * @author Connor McDermid
+ * @see org.mcdermid.AList
  */
 public class ListException extends Exception {
 

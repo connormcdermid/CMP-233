@@ -1,11 +1,25 @@
 package org.mcdermid;
 
+/**
+ * Implementation of List and {@link ListInterface<T>} with Arrays
+ * @param <T> Type of object to store
+ * @author Connor McDermid
+ */
 public class AList<T> implements ListInterface<T> {
 
+    /**
+     * Array that items are stored in -- initialised to size of 20 by default
+     */
     private T[] items;
 
+    /**
+     * How many items are in the list?
+     */
     private int counter;
 
+    /**
+     * Default constructor -- initialises array to size of 20 and sets counter to 0
+     */
     public AList() {
         this.counter = 0;
         //noinspection unchecked
@@ -171,7 +185,7 @@ public class AList<T> implements ListInterface<T> {
 
     /**
      * Returns the contents of the list as a T[] array.
-     * @return
+     * @return Contents as array.
      */
     public T[] toArray() {
         if (isFull()) {

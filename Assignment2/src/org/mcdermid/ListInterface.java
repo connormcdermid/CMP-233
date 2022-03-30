@@ -1,5 +1,12 @@
 package org.mcdermid;
 
+/**
+ * Interface detailing how to constuct a List according to Professor Sawh.
+ * Currently implemented with arrays.
+ * @see org.mcdermid.AList
+ * @param <T> Type for List
+ * @author Connor McDermid
+ */
 public interface ListInterface<T> {
 
     /**
