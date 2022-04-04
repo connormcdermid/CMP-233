@@ -42,10 +42,19 @@ public class AList<T> implements ListInterface<T> {
         return this.counter == 0;
     }
 
+    /**
+     * Returns the number of elements the array can hold without a resize.
+     * @return int
+     */
     public int getCapacity() {
         return this.items.length;
     }
 
+    /**
+     * Resizes the array by a constant factor of 20. Using length * 2 is more efficient for large arrays,
+     * but I don't expect this array to be large.
+     * @throws ListException Throws a ListException if there is insufficient memory for resize.
+     */
     private void resize() throws ListException {
         T[] newarr = null;
         try {
