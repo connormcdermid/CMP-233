@@ -42,6 +42,24 @@ public class AList<T> implements ListInterface<T> {
         return this.counter == 0;
     }
 
+    public int getCapacity() {
+        return this.items.length;
+    }
+
+    private void resize() throws ListException {
+        T[] newarr = null;
+        try {
+            //noinspection unchecked
+            newarr = (T[]) new Object[this.items.length + 20];
+            for (int i = 0; i < this.items.length; i++) {
+                newarr[i] = this.items[i];
+            }
+            this.items = newarr; // overwrite old array, mark old for garbage collection
+        } catch (OutOfMemoryError e) {
+            throw new ListException("Error. Out of memory.");
+        }
+    }
+
     /**
      * Adds an item to the end of the list
      * @param item Item to add
@@ -50,7 +68,11 @@ public class AList<T> implements ListInterface<T> {
     @Override
     public void add(T item) throws org.mcdermid.ListException {
         if (isFull()) {
-            throw new org.mcdermid.ListException("Error. Unable to add. List is full or not enough memory.");
+            try {
+                resize();
+            } catch (ListException e) {
+                throw new ListException("Error. Unable to add. Not enough memory.");
+            }
         }
         if (item == null) {
             throw new org.mcdermid.ListException("Error. Unable to add. Cannot add null entries.");
@@ -66,7 +88,11 @@ public class AList<T> implements ListInterface<T> {
      */
     public void add(T item, int pos) throws org.mcdermid.ListException {
         if (isFull()) {
-            throw new org.mcdermid.ListException("Error. Unable to insert. List is full.");
+            try {
+                resize();
+            } catch (ListException e) {
+                throw new ListException("Error. Unable to insert. Not enough memory.");
+            }
         }
         if (item == null) {
             throw new org.mcdermid.ListException("Error. Unable to insert. Attempt to insert null object.");
@@ -197,6 +223,19 @@ public class AList<T> implements ListInterface<T> {
             ret[i] = this.items[i];
         }
         return ret; // slow return, O(n) time
+    }
+
+    public boolean equals(AList<T> other) {
+        if (this.size() != other.size()) {
+            return false;
+        } else {
+            for (int i = 0; i < this.size(); i++) {
+                if (this.items[i] != other.get(i)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
