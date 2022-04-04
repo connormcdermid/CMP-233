@@ -225,12 +225,22 @@ public class AList<T> implements ListInterface<T> {
         return ret; // slow return, O(n) time
     }
 
+    /**
+     * Compares two AList objects.
+     * @param other The other AList object
+     * @return true if the objects contain all the same elements. False otherwise.
+     */
     public boolean equals(AList<T> other) {
         if (this.size() != other.size()) {
             return false;
         } else {
             for (int i = 0; i < this.size(); i++) {
-                if (this.items[i] != other.get(i)) {
+                try {
+
+                    if (this.items[i] != other.get(i)) {
+                        return false;
+                    }
+                } catch (ListException e) {
                     return false;
                 }
             }
