@@ -61,11 +61,19 @@ public class LList<T> implements ListInterface<T> {
             throw new ListException("Error. Unable to add. Object is null.");
         }
         if (counter == 0) {
-            this.head = new Node<T>(obj, null, null);
+            try {
+                this.head = new Node<T>(obj, null, null);
+            } catch (OutOfMemoryError e) {
+                throw new ListException("Error. Unable to add. Insufficient memory.");
+            }
             this.tail = this.head;
             counter += 1;
         }
-        this.tail.setNext(new Node(obj, null, this.tail));
+        try {
+            this.tail.setNext(new Node(obj, null, this.tail));
+        } catch (OutOfMemoryError e) {
+            throw new ListException("Error. Unable to add. Insufficient memory.");
+        }
         this.tail = this.tail.getNext();
         counter += 1;
     }
@@ -86,7 +94,12 @@ public class LList<T> implements ListInterface<T> {
         pos--;
         int i = 0;
         Node<T> curr = this.head;
-        Node<T> newNode = new Node<T>(obj, null, null);
+        Node<T> newNode;
+        try {
+            newNode = new Node<T>(obj, null, null);
+        } catch (OutOfMemoryError e) {
+            throw new ListException("Error. Unable to insert. Out of memory.");
+        }
         do {
             if (i == pos) {
                 Node<T> prev = curr.getPrev();
