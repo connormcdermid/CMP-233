@@ -38,6 +38,10 @@ public class LList<T> implements ListInterface<T> {
         return this.head;
     }
 
+    public void setHead(Node<T> n) {
+        this.head = n;
+    }
+
     public Node<T> getTail() {
         return this.tail;
     }
