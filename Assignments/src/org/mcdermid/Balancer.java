@@ -9,6 +9,7 @@ public class Balancer {
 
         System.out.println("Please enter an algebraic expression.");
         String in = user.nextLine();
+        boolean balanceBit = true;
 
         // break string into char array
         char[] expr = in.toCharArray();
@@ -33,9 +34,13 @@ public class Balancer {
                     try {
                         if (tokenStack.peek() == Token.PARENTHESES) {
                             tokenStack.pop();
+                        } else {
+                            System.out.printf("This expression is unbalanced at %d, you waste of space.%n", i);
+                            balanceBit = false;
                         }
                     } catch (ListException e) {
                         System.out.printf("This expression is unbalanced at %d, you waste of space.%n", i);
+                        balanceBit = false;
                     }
                     break;
                 case ']':
@@ -44,9 +49,11 @@ public class Balancer {
                             tokenStack.pop();
                         } else {
                             System.out.printf("This expression is unbalanced at %d, you meaty hulk%n", i);
+                            balanceBit = false;
                         }
                     } catch (ListException e) {
                         System.out.printf("This expression is unbalanced at %d, you meaty hulk%n", i);
+                        balanceBit = false;
                     }
                     break;
                 case '}' :
@@ -55,9 +62,11 @@ public class Balancer {
                             tokenStack.pop();
                         } else {
                             System.out.printf("This expression is unbalanced at %d, you meaty hulk%n", i);
+                            balanceBit = false;
                         }
                     } catch (ListException e) {
                         System.out.printf("This expression is unbalanced at %d, you small grassy knoll%n", i);
+                        balanceBit = false;
                     }
                     break;
                 case '>':
@@ -66,12 +75,20 @@ public class Balancer {
                             tokenStack.pop();
                         } else {
                             System.out.printf("This expression is unbalanced at %d, you meaty hulk%n", i);
+                            balanceBit = false;
                         }
                     } catch (ListException e) {
                         System.out.printf("This expression is unbalanced at %d, you truncated decimal%n", i);
+                        balanceBit = false;
                     }
             }
         }
-
+        if (tokenStack.getHead() != null) {
+            balanceBit = false;
+            System.out.printf("This expression is imbalanced at %d %n", expr.length);
+        }
+        if (balanceBit) {
+            System.out.println("This expression is balanced!");
+        }
     }
 }
