@@ -45,4 +45,8 @@ public class Stack<T> implements StackInterface<T> {
     public T peek() {
         return this.head == null ? null : this.head.getValue();
     }
+
+    public String toString() {
+        return this.head.toString();
+    }
 }
