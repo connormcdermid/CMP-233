@@ -1,0 +1,6 @@
+.idea
+out
+.iml
+.idea/*
+out/*
+test.txt
